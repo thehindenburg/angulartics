@@ -165,7 +165,9 @@ function $analytics() {
 
   // Set up register functions for each known handler
   angular.forEach(knownHandlers, installHandlerRegisterFunction);
-  return provider;
+  for (var key in provider) {
+    this[key] = provider[key];
+  }
 }
 
 function $analyticsRun($rootScope, $window, $analytics, $injector) {
